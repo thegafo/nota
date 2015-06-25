@@ -1,0 +1,46 @@
+
+<template name="login">
+
+<style>
+li, ul {list-style:none;}
+</style>
+
+
+{{>background}}
+
+
+<div class="super-centered" style="text-align:center;">
+{{>loginButtons}}
+</div>
+
+
+<div class="container" style="position:fixed; bottom:0; left:0; padding:10px; width: 50px; height:50px; z-index: 1000">
+	<a href="/" id="home" data-activates="mobile-demo" class="button-collapse" style="color:white;"><i class="small material-icons">dashboard</i></a>
+</div>
+
+<div class="container" style="position:fixed; bottom:0; left:55px; padding:10px; width: 50px; height:50px; z-index: 1000">
+	<a href="#" id="refresh" data-activates="mobile-demo" class="button-collapse" style="color:white;"><i class="small material-icons">loop</i></a>
+</div>
+
+
+
+
+<script>
+
+	$(document).ready(function() {
+		toggleLogin();
+
+	});
+
+	//open dropdown, change to button
+	function toggleLogin() {
+		$("#login-dropdown-list").addClass("open");
+		$(".dropdown-toggle").html("");
+		$(".dropdown-toggle").addClass("waves-effect waves-light btn btn");
+		$(".dropdown-toggle").html("Sign In");
+
+	};
+</script>
+
+
+</template>

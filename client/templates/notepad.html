@@ -1,0 +1,87 @@
+<template name="notepad">	
+	
+	<style>
+  		body {color: {{fontColor}}; background-color: {{bgColor}}; }
+  		
+  		textarea {
+  			color: {{fontColor}}; 
+  			background-color: {{bgColor}};
+  			margin: 10px;
+  		}
+  		
+  		input[disabled][type='text'], textarea[disabled]{
+  			background-color: {{bgColor}}; 
+  			color: {{fontColor}}; 
+  			opacity: 1; 
+  			-webkit-opacity: 1;
+  			overflow: auto;
+  		}
+	</style>
+	
+	{{>toolbar}}
+		
+
+	 	<form class="update-note noscroll">
+        	<textarea name="text" id="text" value="{{text}}" class="textarea" spellcheck="false" {{locked}}></textarea><br/>
+    	</form>
+    	
+   
+	
+	
+	{{init}}
+	
+	
+	
+	{{#if settingsVisible}}
+		{{>quickSettings}}
+	{{/if}}
+	
+		
+    	<script>
+			function resizeDiv() {
+				vpw = $(window).width();
+				vph = $(window).height();
+				$('textarea').css({'width': vpw + 'px'});
+				$('textarea').css({'height': vph - 65 + 'px'});
+				$('.textarea').css({'width': vpw + 'px'});
+				$('.textarea').css({'height': vph + - 65 + 'px'});
+			}
+		
+			$(document).ready(function(){
+				resizeDiv();
+			});
+
+			window.onresize = function(event) {
+				resizeDiv();
+			}
+		</script>
+    
+    
+
+	<script>
+	$("textarea").keydown(function(e) {
+    	if(e.keyCode === 9) { // tab was pressed
+        	// get caret position/selection
+        	var start = this.selectionStart;
+        	var end = this.selectionEnd;
+
+        	var $this = $(this);
+        	var value = $this.val();
+
+        	// set textarea value to: text before caret + tab + text after caret
+        	$this.val(value.substring(0, start)
+                    + "\t"
+                    + value.substring(end));
+
+        	// put caret at right position again (add one for the tab)
+        	this.selectionStart = this.selectionEnd = start + 1;
+
+        	// prevent the focus lose
+        	e.preventDefault();
+    	}
+	});
+	
+	</script>
+	
+   
+</template>

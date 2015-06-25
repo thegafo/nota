@@ -1,0 +1,57 @@
+
+<template name="toolbar">
+
+	<!-- Slide Out -->
+	<div class="container" style="position:fixed; bottom:0; left:0; padding:10px; width: 50px; height:50px;  z-index: 1000">
+		<a href="#" data-activates="mobile-demo" class="button-collapse" style="color:{{fontColor}};"><i class="small material-icons">reorder</i></a>
+	</div>
+	
+	<!-- Invert Colors -->
+	<div class="container" style="position:fixed; bottom:0; left:55px; padding:10px; width: 50px; height:50px;  z-index: 1000">
+		<a href="#" id="invert-colors" style="color:{{fontColor}}"><i class="small material-icons">invert_colors</i></a>
+	</div>
+	
+	<!-- Settings -->
+	<div class="container" style="position:fixed; bottom:0; left:110px; padding:10px; width: 50px; height:50px; z-index: 1000">
+		<a href="#" id="settings" style="color:{{fontColor}};"><i class="small material-icons">settings</i></a>
+	</div>
+	
+	<!-- Lock -->
+    {{#if isLocked}}
+	<div class="container" style="position:fixed; bottom:0; left:165px; padding:10px; width: 50px; height:50px; z-index: 1000">
+		<a href="#" id="lock" style="color:{{fontColor}};"><i class="small material-icons">lock_open</i></a><!--lock-->
+	</div>
+	{{else}}
+	<div class="container" style="position:fixed; bottom:0; left:165px; padding:10px; width: 50px; height:50px; z-index: 1000">
+		<a href="#" id="unlock" style="color:{{fontColor}};"><i class="small material-icons">lock</i></a><!--lock-->
+	</div>
+	{{/if}} 
+	
+      
+
+      <a href="#" data-activates="mobile-demo" class="button-collapse" style="display:none;"><i class="mdi-navigation-menu"></i></a>
+      <ul class="right hide-on-med-and-down">
+
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <a href="/" id="home" class="waves-effect waves-teal btn-flat" style="text-decoration:none;">Home</a>
+        <a href="/settings" id="global-settings" class="waves-effect waves-teal btn-flat" style="text-decoration:none;">Settings</a>
+        <a href="/logout" class="waves-effect waves-teal btn-flat" style="text-decoration:none;">Logout</a>
+      </ul>
+
+      
+      
+      
+      <script type="text/javascript">
+        $(document).ready(function() {
+            $(".button-collapse").sideNav({
+            	menuWidth: 215,
+            });
+            
+        });
+        $('.collapsible').collapsible({
+      			accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    	});
+      </script>
+	
+</template>

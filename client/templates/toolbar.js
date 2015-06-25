@@ -39,6 +39,12 @@ Template.toolbar.events({
 		$('.button-collapse').sideNav('hide'); // to prevent stagnant sidenav
 	},
 	
+	"click #logout": function(e) {
+		e.preventDefault();
+		Router.go('/logout');
+		$('.button-collapse').sideNav('hide'); // to prevent stagnant sidenav
+	},
+	
 });
 
 

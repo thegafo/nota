@@ -1,0 +1,35 @@
+
+<template name="feed">
+
+
+
+
+<br>
+
+<div class="container">
+
+	{{#each notes}}
+		{{>card}}
+	{{/each}}
+</div>
+
+
+</template>
+
+
+<template name="card">
+
+	<!-- Card -->
+	<a href="/n/{{_id}}">
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel" style="background-color: {{bgColor}}">
+          <span style="color: {{fontColor}}; font-weight:300;">
+          {{text}}
+          </span>
+        </div>
+      </div>
+    </div>
+	</a>
+	
+</template>
